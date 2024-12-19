@@ -22,34 +22,46 @@
         }
 
         .container {
+            display: flex;
             width: 100%;
-            max-width: 800px;
+            max-width: 1200px;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             overflow: hidden;
+        }
+
+        .image-section {
+            flex: 1;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f3f3f3;
         }
 
-        .header {
-            text-align: center;
-            padding: 20px;
-            background-color: #007bff;
-            color: #fff;
-            font-size: 1.5rem;
-        }
-
-        .content {
-            padding: 20px;
+        .image-section img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
         }
 
         .form-section {
+            flex: 1;
+            padding: 40px;
             display: none;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .form-section.active {
-            display: block;
+            display: flex;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #333;
         }
 
         form {
@@ -73,7 +85,6 @@
             border-radius: 5px;
             font-size: 1rem;
             cursor: pointer;
-            margin-bottom: 15px;
         }
 
         button:hover {
@@ -82,6 +93,7 @@
 
         .toggle-link {
             text-align: center;
+            margin-top: 10px;
             color: #007bff;
             cursor: pointer;
             text-decoration: underline;
@@ -90,32 +102,33 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <span id="page-title">Sign Up</span>
+        <!-- Image Section -->
+        <div class="image-section">
+            <img id="illustration" src="C:\Users\DELL\Downloads\signup_image.webp" alt="Illustration">
         </div>
-        <div class="content">
-            <!-- Sign Up Section -->
-            <div id="signup-section" class="form-section active">
-                <form>
-                    <input type="text" placeholder="Username" required>
-                    <input type="email" placeholder="Email" required>
-                    <input type="password" placeholder="Password" required>
-                    <input type="password" placeholder="Confirm Password" required>
-                    <input type="text" placeholder="Mobile Number" required>
-                    <button type="submit">Sign Up</button>
-                </form>
-                <p class="toggle-link" onclick="toggleForm('login')">Already have an account? Log in</p>
-            </div>
 
-            <!-- Login Section -->
-            <div id="login-section" class="form-section">
-                <form>
-                    <input type="email" placeholder="Enter Email" required>
-                    <input type="password" placeholder="Enter Password" required>
-                    <button type="submit">Log in</button>
-                </form>
-                <p class="toggle-link" onclick="toggleForm('signup')">Don't have an account? Sign up</p>
-            </div>
+        <!-- Form Section -->
+        <div class="form-section active" id="signup-section">
+            <h1>Sign Up</h1>
+            <form>
+                <input type="text" placeholder="Username" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <input type="text" placeholder="Mobile Number" required>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p class="toggle-link" onclick="toggleForm('login')">Already have an account? Log in</p>
+        </div>
+
+        <div class="form-section" id="login-section">
+            <h1>Login</h1>
+            <form>
+                <input type="email" placeholder="Enter Email" required>
+                <input type="password" placeholder="Enter Password" required>
+                <button type="submit">Log in</button>
+            </form>
+            <p class="toggle-link" onclick="toggleForm('signup')">Don't have an account? Sign up</p>
         </div>
     </div>
 
@@ -123,16 +136,16 @@
         function toggleForm(form) {
             const signupSection = document.getElementById('signup-section');
             const loginSection = document.getElementById('login-section');
-            const pageTitle = document.getElementById('page-title');
+            const illustration = document.getElementById('illustration');
 
             if (form === 'signup') {
                 signupSection.classList.add('active');
                 loginSection.classList.remove('active');
-                pageTitle.textContent = 'Sign Up';
+                illustration.src = "C:\Users\DELL\Downloads\signup_image.webp";
             } else {
                 signupSection.classList.remove('active');
                 loginSection.classList.add('active');
-                pageTitle.textContent = 'Login';
+                illustration.src = "C:\Users\DELL\Downloads\login image";
             }
         }
     </script>
