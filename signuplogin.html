@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up & Login</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .toggle-link {
+            text-align: center;
+            color: #007bff;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span id="page-title">Sign Up</span>
+        </div>
+        <div class="content">
+            <!-- Sign Up Section -->
+            <div id="signup-section" class="form-section active">
+                <form>
+                    <input type="text" placeholder="Username" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Confirm Password" required>
+                    <input type="text" placeholder="Mobile Number" required>
+                    <button type="submit">Sign Up</button>
+                </form>
+                <p class="toggle-link" onclick="toggleForm('login')">Already have an account? Log in</p>
+            </div>
+
+            <!-- Login Section -->
+            <div id="login-section" class="form-section">
+                <form>
+                    <input type="email" placeholder="Enter Email" required>
+                    <input type="password" placeholder="Enter Password" required>
+                    <button type="submit">Log in</button>
+                </form>
+                <p class="toggle-link" onclick="toggleForm('signup')">Don't have an account? Sign up</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm(form) {
+            const signupSection = document.getElementById('signup-section');
+            const loginSection = document.getElementById('login-section');
+            const pageTitle = document.getElementById('page-title');
+
+            if (form === 'signup') {
+                signupSection.classList.add('active');
+                loginSection.classList.remove('active');
+                pageTitle.textContent = 'Sign Up';
+            } else {
+                signupSection.classList.remove('active');
+                loginSection.classList.add('active');
+                pageTitle.textContent = 'Login';
+            }
+        }
+    </script>
+</body>
+</html>
